@@ -26,10 +26,19 @@ class SecondContactListController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-        let contact = person[indexPath.row]
-        content.text = contact.fullName
+        let contact = person[indexPath.section]
+        switch indexPath.row {
+        case 0:
+            content.text = "Phone: \(contact.phone)"
+        default:
+            content.secondaryText = "Email: \(contact.email)"
+        }
         cell.contentConfiguration = content
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let person = person[section]
+        return person.fullName
+    }
 }
