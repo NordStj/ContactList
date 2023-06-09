@@ -31,7 +31,7 @@ class SecondContactListController: UITableViewController {
         case 0:
             content.text = "Phone: \(contact.phone)"
         default:
-            content.secondaryText = "Email: \(contact.email)"
+            content.text = "Email: \(contact.email)"
         }
         cell.contentConfiguration = content
         return cell
